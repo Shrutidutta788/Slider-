@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>slider</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #161616;
+        }
+
+        .slider {
+            position: absolute;
+            inset: 10px 50px 10px 10px;
+            background: #222;
+            border-radius: 20px;
+        }
+
+        .slider .slides {
+            position: absolute;
+            top: 60%;
+            transform: translateY(-50%);
+            width: 200px;
+            height: 280px;
+            background: var(--img);
+            background-position: center;
+            background-size: cover;
+            transition: 0.5s;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+
+        .slides:nth-child(1),
+        .slides:nth-child(2) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            transform: translateY(0);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0);
+        }
+
+        .slides:nth-child(3) {
+            left: calc(50% + 260px);
+            background-size: cover;
+        }
+
+        .slides:nth-child(4) {
+            left: calc(50% + 480px);
+            background-size: cover;
+        }
+
+        .slides:nth-child(5) {
+            left: calc(50% + 700px);
+            background-size: cover;
+        }
+
+        .slides:nth-child(6) {
+            left: calc(50% + 1000px);
+            background-size: cover;
+        }
+
+        .buttons {
+            position: absolute;
+            bottom: 15px;
+            display: flex;
+            gap: 20px;
+        }
+
+        .buttons span {
+            position: relative;
+            width: 50px;
+            height: 50px;
+            background: #000;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .buttons span::before {
+            content: "";
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            border-top: 4px solid #fff;
+            border-right: 4px solid #fff;
+            transform: rotate(225deg) translate(-4px, 4px);
+        }
+
+        .buttons span:nth-child(2)::before {
+            transform: rotate(-315deg) translate(-4px, 4px);
+        }
+
+        .buttons span:active {
+            opacity: 0.5;
+        }
+
+        .content {
+            position: relative;
+            padding: 40px;
+            margin-bottom: 50px;
+            max-width: 600px;
+            transition: 0.5s;
+            transition-delay: 0;
+            z-index: 100;
+            opacity: 0;
+            color: #fff;
+        }
+
+        .slides:nth-child(1) .content,
+        .slides:nth-child(2) .content {
+            opacity: 1;
+            transition-delay: 0.5s;
+        }
+
+        h2 {
+            font-size: 60px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 18px;
+        }
+
+        @media (max-width: 900px) {
+            .slider {
+                position: absolute;
+                inset: 40px 40px 200px 40px;
+            }
+
+            .slider .slides {
+                width: 100px;
+                height: 100px;
+                top: initial;
+                bottom: -170px;
+            }
+
+            .slider .slides:nth-child(1),
+            .slider .slides:nth-child(2) {
+                top: initial;
+                bottom: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+            .slider .slides:nth-child(3) {
+                left: 0;
+            }
+
+            .slider .slides:nth-child(4) {
+                left: 120px;
+            }
+
+            .slider .slides:nth-child(5) {
+                left: 240px;
+            }
+
+            .content {
+                margin-bottom: 20px;
+                max-width: 400px;
+            }
+
+            h2 {
+                font-size: 30px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="slider">
+            <div class="slides" style="--img: url('back1.png')">
+                <div class="content">
+                    <h2>Hills And Mountains</h2>
+                    <p>
+                        In their shadow, rivers dance with joyful glee,
+                        Carving paths through the land, wild and free.
+                        Each crest, a sentinel in nature's grand design,
+                        A testament to the earth's enduring shrine.
+
+                        And as the sun sets behind their noble frame,
+                        Hills and mountains etch their timeless claim.
+                        For in their silent presence, we find solace deep,
+                        A reminder of the secrets that the earth does keep.
+                    </p>
+                </div>
+            </div>
+            <div class="slides" style="--img: url('back2.jpg')">
+                <div class="content">
+                    <h2>Elephant</h2>
+                    <p>
+                        An elephant, a titan of the land,
+                        With tusks like ivory, proud and grand.
+                        Their trumpeting call, a thunderous sound,
+                        Echoes through savannas, earth resound.
+                        In family herds, they roam the plain,
+                        Guided by memory, a boundless domain.
+                        Their gentle eyes hold ancient wisdom's key,
+                        A glimpse into a world where souls run free.
+                        
+                    </p>
+                </div>
+            </div>
+            <div class="slides" style="--img: url('back3.jpg')">
+                <div class="content">
+                    <h2>Desert</h2>
+                    <p>
+                        In the vast expanse where sunsets burn,
+                        Lies a realm where sands endlessly churn.
+                        The desert, a canvas of golden hue,
+                        Where solitude whispers secrets true.
+                        
+                        Beneath the endless sky, a silent sea,
+                        Where dunes rise like waves in eternity.
+                        Each grain of sand, a story untold,
+                        In the desert's embrace, mysteries unfold.
+                    </p>
+                </div>
+            </div>
+            <div class="slides" style="--img: url('back4.jpg')">
+                <div class="content">
+                    <h2>River</h2>
+                    <p>
+                        In the heart of the land, a river flows,
+                        A lifeline of nature, where wonder grows.
+                        From humble beginnings in mountain springs,
+                        It journeys forth, a melody it sings.
+                        
+                        A ribbon of silver, winding its way,
+                        Through valleys and meadows where children play.
+                        It nourishes the earth, a giver of life,
+                        Bringing abundance amidst struggle and strife.
+                    </p>
+                </div>
+            </div>
+            <div class="slides" style="--img: url('back5.jpg')">
+                <div class="content">
+                    <h2>Deer</h2>
+                    <p>
+                        In the forests, where shadows dance and play,
+                        Animals roam, in the light of day.
+                        Their fur, their feathers, their scales so fine,
+                        Each adaptation a masterpiece of design.
+                        
+                        In the oceans vast, where mysteries lie,
+                        Marine life thrives, beneath the azure sky.
+                        From majestic whales to tiny coral reefs,
+                        Each creature plays a role, beyond belief.
+                    </p>
+                </div>
+            </div>
+            <div class="slides" style="--img: url('back6.jpg')">
+                <div class="content">
+                    <h2>Forest</h2>
+                    <p>
+                        In the heart of the wilderness, where silence reigns,
+                        Lies a realm of wonder, where nature sustains.
+                        The forest, a tapestry of green and gold,
+                        Where stories untold, in whispers, are told.
+                        
+                        Amidst the towering trees, a sanctuary lies,
+                        Where sunlight dances and shadows arise.
+                        Each leaf, a brushstroke in nature's grand art,
+                        A masterpiece born of earth and heart.
+
+
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="buttons">
+            <span class="prev"></span>
+            <span class="next"></span>
+        </div>
+    </div>
+
+    <script>
+        let prev = document.querySelector(".prev");
+        let next = document.querySelector(".next");
+        let slider = document.querySelector(".slider");
+
+        next.addEventListener("click", function () {
+            let slides = document.querySelectorAll(".slides");
+            slider.appendChild(slides[0]);
+        });
+        prev.addEventListener("click", function () {
+            let slides = document.querySelectorAll(".slides");
+            slider.prepend(slides[slides.length - 1]);
+        });
+    </script>
+</body>
+
+</html>
